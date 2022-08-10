@@ -75,7 +75,10 @@ public class SendNotificationFunction extends
 	private void sendPushNotification(SendNotificationRequest request, DeviceTokenMessage deviceToken) {
 		// See documentation on defining a message payload.
 		LOGGER.info("Sending message to token:" + deviceToken.getToken() + ", message:" + request.getMessage());
-		Message message = Message.builder().putData("message", request.getMessage()).setToken(deviceToken.getToken())
+		Message message = Message.builder()
+				.putData("title", request.getMessage())
+				.putData("body", request.getMessage())
+				.setToken(deviceToken.getToken())
 				.build();
 
 		LOGGER.info("Provider usado:" + provider);
@@ -85,6 +88,9 @@ public class SendNotificationFunction extends
 			LOGGER.info("sendPushNotification message:" + message);
 			provider.send(message);
 			deviceToken.updateLastActivity();
+
+			LOGGER.info("Message sended to token:" + deviceToken.getToken() + " , contacto:" + request.getEmail()
+			+ " , message:" + request.getMessage());
 			
 			// Si el mensaje se envio con exito, entonces se actualiza la fecha de ultima actividad del token
 			SaveNotificationTokenRequest saveNotificationTokenRequest = new SaveNotificationTokenRequest();
@@ -99,8 +105,7 @@ public class SendNotificationFunction extends
 					+ ", device:" + deviceToken.getDevice());
 			LOGGER.error(FunctionException.toString(e));
 		}
-		LOGGER.info("Message sended to token:" + deviceToken.getToken() + " , contacto:" + request.getEmail()
-				+ " , message:" + request.getMessage());
+
 	}
 
 }

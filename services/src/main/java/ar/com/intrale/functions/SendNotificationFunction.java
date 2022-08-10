@@ -86,11 +86,11 @@ public class SendNotificationFunction extends
 			// Send a message to the device corresponding to the provided
 			// registration token.
 			LOGGER.info("sendPushNotification message:" + message);
-			provider.send(message);
+			String messageId = provider.send(message);
 			deviceToken.updateLastActivity();
 
 			LOGGER.info("Message sended to token:" + deviceToken.getToken() + " , contacto:" + request.getEmail()
-			+ " , message:" + request.getMessage());
+			+ " , messageId:" + messageId);
 			
 			// Si el mensaje se envio con exito, entonces se actualiza la fecha de ultima actividad del token
 			SaveNotificationTokenRequest saveNotificationTokenRequest = new SaveNotificationTokenRequest();

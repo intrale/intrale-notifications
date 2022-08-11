@@ -23,7 +23,14 @@
 		<s3.bucketname>${env.S3_BUCKET_NAME}</s3.bucketname>
 		<s3.access>${env.S3_ACCESS}</s3.access>
 		<s3.secret>${env.S3_SECRET}</s3.secret>
-
+		
+		<firebase.projectid>${env.FIREBASE_PROJECT_ID}</firebase.projectid>
+		<firebase.privatekeyid>${env.FIREBASE_PRIVATE_KEY_ID}</firebase.privatekeyid>
+		<firebase.privatekey>${env.FIREBASE_PRIVATE_KEY}</firebase.privatekey>
+		<firebase.clientemail>${env.FIREBASE_CLIENT_EMAIL}</firebase.clientemail>
+		<firebase.clientid>${env.FIREBASE_CLIENT_ID}</firebase.clientid>
+		<firebase.clientx509url>${env.FIREBASE_CLIENT_X509_URL}</firebase.clientx509url>
+		
 	</properties>
 
 	<profiles>

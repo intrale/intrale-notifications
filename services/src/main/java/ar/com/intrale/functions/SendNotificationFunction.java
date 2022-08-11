@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.google.firebase.messaging.Message;
+import com.google.firebase.messaging.Notification;
 
 import ar.com.intrale.BaseFunction;
 import ar.com.intrale.FunctionResponseToBase64HttpResponseBuilder;
@@ -76,8 +77,9 @@ public class SendNotificationFunction extends
 		// See documentation on defining a message payload.
 		LOGGER.info("Sending message to token:" + deviceToken.getToken() + ", message:" + request.getMessage());
 		Message message = Message.builder()
-				.putData("title", request.getMessage())
-				.putData("body", request.getMessage())
+				.setNotification(Notification.builder().setTitle(request.getMessage()).setBody(request.getMessage()).build())
+				/*.putData("title", request.getMessage())
+				.putData("body", request.getMessage())*/
 				.setToken(deviceToken.getToken())
 				.build();
 

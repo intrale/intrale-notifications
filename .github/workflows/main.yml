@@ -85,6 +85,12 @@ jobs:
           COGNITO_SECRET: ${{ secrets.COGNITO_SECRET }} 
           DATABASE_ACCESS: ${{ secrets.DATABASE_ACCESS }} 
           DATABASE_SECRET: ${{ secrets.DATABASE_SECRET }} 
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }} 
+          FIREBASE_PRIVATE_KEY_ID: ${{ secrets.FIREBASE_PRIVATE_KEY_ID }} 
+          FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }} 
+          FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }} 
+          FIREBASE_CLIENT_ID: ${{ secrets.FIREBASE_CLIENT_ID }} 
+          FIREBASE_CLIENT_X509_URL: ${{ secrets.FIREBASE_CLIENT_X509_URL }} 
         run: |
           sed -i "s/PARENT_VERSION/${PARENT_VERSION}/gi" pom.xml
           sed -i "s/CORE_VERSION/${CORE_VERSION}/gi" pom.xml
